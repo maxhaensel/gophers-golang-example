@@ -33,6 +33,17 @@ func (r *Resolver) Todos(ctx context.Context, args todoArgs) (*[]*TodoResolver, 
 	return arr, nil
 }
 
+// CreateTodo Mutation
+func (r *Resolver) CreateTodo(ctx context.Context, args *struct {
+	Todo string `json:"todo"`
+}) (*TodoResolver, error) {
+	todo := &model.Todo{
+		UID:  "id 2",
+		Name: args.Todo,
+	}
+	return &TodoResolver{todo: todo}, nil
+}
+
 // UID EXPORT
 func (r *TodoResolver) UID() *graphql.ID {
 	uid := graphql.ID(r.todo.UID)
