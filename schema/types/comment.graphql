@@ -1,0 +1,4 @@
+type Comment {
+  uid: String
+  name: String
+}

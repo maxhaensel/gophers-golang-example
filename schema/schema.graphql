@@ -1,0 +1,12 @@
+schema {
+  query: Query
+  mutation: Mutation
+}
+
+type Query {
+  todo(uid: ID!): Todo
+  todos(uid: ID!): [Todo]
+}
+
+type Mutation {
+}
