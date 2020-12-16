@@ -2,7 +2,7 @@
   Add Mutation for todos here
 */
 
-package resolver
+package todoresolver
 
 import (
 	"context"
@@ -10,12 +10,12 @@ import (
 )
 
 // CreateTodo Mutation
-func (r *Resolver) CreateTodo(ctx context.Context, args *struct {
+func (r *ResolverTodo) CreateTodo(ctx context.Context, args *struct {
 	Todo string
-}) (*TodoResolver, error) {
+}) (*ResponseTodo, error) {
 	todo := &model.Todo{
 		UID:  "id 2",
 		Name: args.Todo,
 	}
-	return &TodoResolver{todo: todo}, nil
+	return &ResponseTodo{todo: todo}, nil
 }

@@ -1,5 +1,5 @@
 type Todo {
   uid: ID
   name: String
-  comment: [Comment]
+  comment(id: String): [Comment]
 }

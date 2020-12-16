@@ -6,6 +6,7 @@ schema {
 type Query {
   todo(uid: ID!): Todo
   todos(uid: ID!): [Todo]
+  user(uid: ID!): User
 }
 
 type Mutation {

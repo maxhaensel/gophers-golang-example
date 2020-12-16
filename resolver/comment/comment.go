@@ -1,4 +1,4 @@
-package resolver
+package commentresolver
 
 import (
 	"context"
@@ -8,18 +8,18 @@ import (
 	"github.com/graph-gophers/dataloader"
 )
 
-// CommentResolver to resolve the Comment-Type
-type CommentResolver struct {
+// ResponseComment to resolve the Comment-Type
+type ResponseComment struct {
 	comment *model.Comment
 }
 
-// UID CommentResolver
-func (r *CommentResolver) UID(ctx context.Context) *string {
+// UID ResponseComment
+func (r *ResponseComment) UID(ctx context.Context) *string {
 	return &r.comment.UID
 }
 
-// Name CommentResolver
-func (r *CommentResolver) Name(ctx context.Context) *string {
+// Name ResponseComment
+func (r *ResponseComment) Name(ctx context.Context) *string {
 	return &r.comment.Name
 }
 
@@ -34,11 +34,11 @@ var batchFn = func(ctx context.Context, keys dataloader.Keys) []*dataloader.Resu
 	// Create a emptry result Array
 	var results []*dataloader.Result
 	for in, key := range keys {
-		comment := &CommentResolver{comment: &model.Comment{
+		comment := &ResponseComment{comment: &model.Comment{
 			UID:  key.String(),
 			Name: "index: " + fmt.Sprint(in),
 		}}
-		arr := &[]*CommentResolver{comment, comment}
+		arr := &[]*ResponseComment{comment, comment}
 		// append the Comments to the Result
 		results = append(results, &dataloader.Result{Data: arr})
 	}
